@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
-const posts = require("./routes/post");
+const posts = require("./routes/posts");
 const app = express();
 app.use(bodyparser.json());
 const PORT = 5000;
