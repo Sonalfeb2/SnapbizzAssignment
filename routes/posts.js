@@ -2,7 +2,7 @@ const express = require("express");
 const { v4: uuidV4 } = require("uuid");
 const app = express.Router();
 
-let posts = [
+var posts = [
   {
     id: 1,
     title: "First post",
@@ -27,4 +27,11 @@ app.post("/", (req, res) => {
   }
   res.send(`Post with the title ${req.body.title} saved to the database`);
 });
+
+app.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  posts = posts.filter(data => data.id !== id);
+  res.send(`Posts with the id ${id} has deleted`);
+});
+
 module.exports = app;
