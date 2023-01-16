@@ -34,4 +34,23 @@ app.delete("/:id", (req, res) => {
   res.send(`Posts with the id ${id} has deleted`);
 });
 
+app.patch("/:id", async (req, res) => {
+  const index = posts.findIndex(post => post.id == req.params.id);
+  if (index !== -1) {
+    if (req.body.title) {
+      posts[index].title = req.body.title;
+    }
+    if (req.body.content) {
+      posts[index].content = req.body.content;
+    }
+
+    res.send(
+      `Title has been updated to ${req.body
+        .title}.content has been updated to ${req.body.content}`
+    );
+  } else {
+    res.send("Data not Found");
+  }
+});
+
 module.exports = app;
