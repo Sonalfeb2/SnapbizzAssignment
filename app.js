@@ -6,7 +6,7 @@ app.use(bodyparser.json());
 const PORT = 5000;
 app.use("/posts", posts);
 app.get("/", (req, res) => {
-  res.send("Hello from Snapbizz");
+  res.send("Hello from Sonal Agrawal");
 });
 app.listen(PORT, () => {
   console.log(`Server Rinning on PORt - http://localhost:${PORT}`);

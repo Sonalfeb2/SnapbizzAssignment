@@ -1,5 +1,5 @@
 const express = require("express");
-
+const { v4: uuidV4 } = require("uuid");
 const app = express.Router();
 
 let posts = [
@@ -20,7 +20,11 @@ app.get("/", (req, res) => {
 });
 app.post("/", (req, res) => {
   const newPost = req.body;
-  posts.push(newPost);
-  res.send(posts);
+  if (req.body.id) {
+    posts.push(newPost);
+  } else {
+    posts.push({ ...newPost, id: uuidV4() });
+  }
+  res.send(`Post with the title ${req.body.title} saved to the database`);
 });
 module.exports = app;
